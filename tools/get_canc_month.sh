@@ -1,12 +1,12 @@
 #!/bin/bash
-# Buscamos numero de vuelos cancelados por mes entre dos aeropuertos. 
+# Buscamos numero de vuelos cancelados por mes entre dos aeropuertos.
 
 # Definimos algunas variables. Ojo que a bash no le gustan los espacios cerca del "=".
 year="2008"
 infile="../data/2008.csv"
 outfile="canc_by_month-dsm-ord-2008.csv"
 
-orig_ap="DSM" 
+orig_ap="DSM"
 dest_ap="ORD"
 
 # La secuencia es:

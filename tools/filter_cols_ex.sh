@@ -1,5 +1,5 @@
 #!/bin/bash
-# Filtrar columnas fecha, aerolinea, nro. de vuelo 
+# Filtrar columnas fecha, aerolinea, nro. de vuelo
 infile="../data/2008.csv"
 outfile="date-carrier-filter.csv"
 

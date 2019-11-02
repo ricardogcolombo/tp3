@@ -5,9 +5,9 @@
 infile="../data/2008.csv"
 outfile="airport-filter.csv"
 
-orig_ap="IND" 
+orig_ap="IND"
 dest_ap="PHX"
 
 # Columna 17 aeropuerto origen, columna 18 aeropuerto destino
-# Ojo con la secuencia de " y ' al filtrar por &&. 
-awk -F, '$17 == "'"$orig_ap"'" && $18 == "'"$dest_ap"'"' $infile > $outfile 
+# Ojo con la secuencia de " y ' al filtrar por &&.
+awk -F, '$17 == "'"$orig_ap"'" && $18 == "'"$dest_ap"'"' $infile > $outfile

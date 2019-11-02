@@ -1,5 +1,5 @@
 #!/bin/bash
-# Filtramos todas las posibles combinaciones origen-destino. 
+# Filtramos todas las posibles combinaciones origen-destino.
 
 # Definimos algunas variables. Ojo que a bash no le gustan los espacios cerca del "=".
 year="2008"
