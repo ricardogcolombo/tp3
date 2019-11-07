@@ -7,9 +7,5 @@ class CML {
 public:
     CML();
 
-    void fit(Matrix X, Vector b);
-
-    Vector predict();
-private:
-    Matrix old;
+    Vector fit(Matrix A, Vector b);
 };

@@ -27,7 +27,7 @@ add_subdirectory(pybind11)
 
 pybind11_add_module(sentiment
                     src/sentiment.cpp
-                    src/eigen.cpp)
+                    src/cml.cpp)
 
 
 # This variable is used to locate the bin directory where the application will be installed
@@ -48,11 +48,11 @@ include_directories(pybind11/include)
 
 add_executable(tp3_pybind
         src/main_pybind.cpp
-        src/eigen.cpp)
+        src/cml.cpp)
 
 target_link_libraries(tp3_pybind PRIVATE pybind11::embed)
 
 # sino hacer lo siguiente manteniendo las dependencias por separado
 add_executable(tp3
         src/main.cpp
-        src/eigen.cpp)
+        src/cml.cpp)

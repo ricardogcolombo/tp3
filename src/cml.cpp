@@ -7,19 +7,13 @@
 
 using namespace std;
 
-
 CML::CML()
 {}
 
-void CML::fit(SparseMatrix X, Matrix y)
-{}
-
-
-Vector CML::predict(SparseMatrix X)
+Vector CML::fit(Matrix A, Vector b)
 {
-    // Creamos vector columna a devolver
-    auto ret = Vector(X.rows());
+    Matrix ata = A.transpose()*A;
+    Vector atb = A.transpose()*b;
 
-    return ret;
+    return ata.lu().solve(atb);
 }
-

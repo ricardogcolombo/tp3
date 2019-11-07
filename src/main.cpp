@@ -6,7 +6,6 @@
 #include "catch.hpp"
 #include <iostream>
 #include <iomanip>
-#include "eigen.h"
 using namespace std;
 
 TEST_CASE( "Classifying training set returns the same labels", "[knn]" ) {
