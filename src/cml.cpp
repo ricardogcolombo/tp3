@@ -36,7 +36,9 @@ Matrix CML::getA(){
 Vector CML::getB(){
     return this->atb;
 }
-Vector CML::predict()
+double CML::predict(double a)
 {
-    return this->pred;
+    Vector fa = this->f(a);
+    double res = fa.transpose()*this->pred;
+    return res;
 }

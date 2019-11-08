@@ -9,7 +9,7 @@ public:
     CML(const std::function<Vector(double)> &func,int size);
 
     void fit(Vector x,Vector y);
-    Vector predict();
+    double predict(double a);
     Matrix getA();
     Vector getB();
     Vector appF(int a);
