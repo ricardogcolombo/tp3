@@ -15,3 +15,4 @@ PYBIND11_MODULE(sentiment, m) {
         .def("appF", &CML::appF)
         .def("predict",&CML::predict);
 }
+

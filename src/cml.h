@@ -10,7 +10,6 @@ public:
 
     void fit(Vector x,Vector y);
     Vector predict();
-    Vector test(int a);
     Matrix getA();
     Vector getB();
     Vector appF(int a);
