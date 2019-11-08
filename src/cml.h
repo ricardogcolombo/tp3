@@ -8,7 +8,7 @@ class CML {
 public:
     CML(const std::function<Vector(double)> &func,int size);
 
-    void fit(Vector y);
+    void fit(Vector x,Vector y);
     Vector predict();
     Vector test(int a);
     Matrix getA();

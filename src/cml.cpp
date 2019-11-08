@@ -13,12 +13,12 @@ CML::CML(const std::function<Vector(double)> &func,int size) {
     this->size = size;
 }
 
-void CML::fit(Vector y)
+void CML::fit(Vector x,Vector y)
 {
     MatrixXd A = Matrix(this->size,this->size);
 
     for(int i =0;i<y.size();i++){
-        A.row(i)=this->f(y[i]);
+        A.row(i)=this->f(x[i]);
     }
     Vector b = Vector(y);
     this->ata=A.transpose()*A;
