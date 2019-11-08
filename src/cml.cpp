@@ -7,13 +7,36 @@
 
 using namespace std;
 
-CML::CML()
-{}
+CML::CML(const std::function<Vector(double)> &func,int size) {
 
-Vector CML::fit(Matrix A, Vector b)
+    this->f = func;
+    this->size = size;
+}
+
+void CML::fit(Vector y)
 {
-    Matrix ata = A.transpose()*A;
-    Vector atb = A.transpose()*b;
+    MatrixXd A = Matrix(this->size,this->size);
 
-    return ata.lu().solve(atb);
+    for(int i =0;i<y.size();i++){
+        A.row(i)=this->f(y[i]);
+    }
+    Vector b = Vector(y);
+    this->ata=A.transpose()*A;
+    this->atb = A.transpose()*b;
+    Vector res = this->ata.lu().solve(this->atb);
+    this->pred = res;
+}
+Vector CML::appF(int a){
+    return this->f(a);
+}
+Matrix CML::getA(){
+    return this->ata;
+}
+
+Vector CML::getB(){
+    return this->atb;
+}
+Vector CML::predict()
+{
+    return this->pred;
 }
