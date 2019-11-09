@@ -6,7 +6,7 @@ namespace py=pybind11;
 #include <vector>
 
 // el primer argumento es el nombre...
-PYBIND11_MODULE(sentiment, m) {
+PYBIND11_MODULE(predict, m) {
     py::class_<CML>(m, "CML")
         .def(py::init<const std::function<Vector(double)>,int>())
         .def("fit", &CML::fit)
