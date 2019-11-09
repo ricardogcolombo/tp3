@@ -25,8 +25,8 @@ include_directories(eigen)
 
 add_subdirectory(pybind11)
 
-pybind11_add_module(sentiment
-                    src/sentiment.cpp
+pybind11_add_module(predict
+                    src/predict.cpp
                     src/cml.cpp)
 
 
@@ -37,7 +37,7 @@ set(CMAKE_INSTALL_PREFIX
 
 message(CMAKE_INSTALL_PREFIX = "${CMAKE_INSTALL_PREFIX}")
 
-install(TARGETS sentiment DESTINATION ${CMAKE_INSTALL_PREFIX}/notebooks)
+install(TARGETS predict DESTINATION ${CMAKE_INSTALL_PREFIX}/notebooks)
 
 
 
