@@ -9,8 +9,10 @@ En el sitio pueden bajar individualmente la información por año. Si
 desean bajar toda la información de una sola vez, pueden correr los
 siguientes comandos:
 
-   xargs -i wget -bqc '{}' < dataset_list.txt
-   bunzip2 -k *.bz2
+```
+xargs -i wget -bqc '{}' < dataset_list.txt
+bunzip2 -k *.bz2
+```
 
 Notar que en el archivo `dataset_list.txt` pueden filtrar los años que
 deseen descargar.
@@ -22,10 +24,16 @@ scripts que se proveen o alguna otra herramienta adecuada.
 Ejemplo: bajar los datos del año 2008 y  alojarlos en carpeta `data`
 en la misma jerarquía que las herramientas, y correr get_canc_month.sh
 
-  mkdir data
-  cd data
-  wget http://stat-computing.org/dataexpo/2009/2008.csv.bz2
-  bunzip2 -k 2008.csv.bz2
-  cd ..
-  cd tools
-  bash get_canc_month.sh
+```
+mkdir data
+cd data
+wget http://stat-computing.org/dataexpo/2009/2008.csv.bz2
+bunzip2 -k 2008.csv.bz2
+cd ..
+cd tools
+bash get_canc_month.sh
+```
+
+### `tools`
+
+- `get_canc_month.sh YEAR` obtiene la cantidad de cancelaciones por mes en el año `YEAR`
