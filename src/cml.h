@@ -6,17 +6,41 @@
 
 class CML {
 public:
-    CML(const std::function<Vector(double)> &func,int size);
+     /**
+     * Crea CML con una familia F de funciones de tamaño size
+     */
+    CML(const std::function<Vector(double)> &F,int size)
+    {
+        this->F = F;
+        this->size = size;
+    };
 
-    void fit(Vector x,Vector y);
-    double predict(double a);
-    Matrix getA();
-    Vector getB();
-    Vector appF(int a);
+    /**
+     * Inicializa con los datos (xi, yi) i=1...n
+     * Encuentra a : predict(x*) = sum ai Fi(x*) i=1...n
+     */
+    void fit(Vector x, Vector y)
+    {
+        this->a = _fit(x, y);
+    };
+
+    /**
+     * Predice un x* despues de calcular `fit`
+     */
+    double predict(double x)
+    {
+        return _predict(x);
+
+    };
 private:
-    std::function<Vector(double)> f;
+    // familia de funciones F
+    std::function<Vector(double)> F;
     int size;
-    Matrix ata;
-    Vector atb;
-    Vector pred;
+
+    // prediccion de los parametros que combinan
+    // linealmente las funciones de F
+    Vector a;
+
+    Vector _fit(Vector,Vector);
+    double _predict(double);
 };
