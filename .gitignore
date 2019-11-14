@@ -139,3 +139,4 @@ cmake-build-release
 data/*
 notes.txt
 delays_by_month/
+.vscode/
