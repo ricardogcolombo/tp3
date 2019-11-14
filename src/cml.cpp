@@ -7,19 +7,27 @@
 
 using namespace std;
 
-CML::CML(const std::function<Vector(double)> &func,int size) {
-
+CML::CML(const std::function<Vector(double)> &func, int size)
+{
     this->f = func;
     this->size = size;
 }
 
-void CML::fit(Vector x,Vector y)
+void CML::fit(Vector x, Vector y)
 {
-    MatrixXd A = Matrix(this->size,this->size);
+    uint m = this->size;
+    uint n = x.size();
 
-    for(int i =0;i<y.size();i++){
-        A.row(i)=this->f(x[i]);
+    MatrixXd A = Matrix(n, m);
+
+    for (uint i = 0; i < n; i++) {
+        auto fxi = this->f(x[i]);
+        for (uint j = 0; j < m; j++) {
+            A(i, j) = fxi[j];
+            cout << A(i,j) << endl;
+        }
     }
+
     Vector b = Vector(y);
     this->ata=A.transpose()*A;
     this->atb = A.transpose()*b;
