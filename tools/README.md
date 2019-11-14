@@ -36,4 +36,6 @@ bash get_canc_month.sh
 
 ### `tools`
 
-- `get_canc_month.sh YEAR` obtiene la cantidad de cancelaciones por mes en el año `YEAR`
+- `get_canc_month.sh YEAR` obtiene la cantidad de cancelaciones por mes en el año `YEAR`.
+- `get_delays_month.sh YEAR` obtiene la cantidad de delays por mes en el año `YEAR`.
+- `run_all_get_delay_month.sh` corre `get_delays_month.sh` con todos los años.

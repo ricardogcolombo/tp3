@@ -5,7 +5,10 @@
 inyear=$1
 year=${inyear:=2008}
 infile="../data/${year}.csv"
-outfile="delays_by_month-${year}.csv"
+outdir="../delays_by_month/"
+outfile="${outdir}delays_by_month-${year}.csv"
+
+mkdir -p $outdir
 
 # La secuencia es:
 # 1. Primero filtramos por vuelos con ArrDelay > 15m. Esto lo hacemos una unica vez y lo guardamos en el archivo delay_aux.csv
