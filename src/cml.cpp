@@ -1,44 +1,60 @@
 #include <algorithm>
 #include <numeric>
-//#include <chrono>
 #include <iostream>
-#include "cml.h"
 #include <typeinfo>
+#include "cml.h"
 
 using namespace std;
 
-CML::CML(const std::function<Vector(double)> &func,int size) {
+     /*************/
+    /*   MODOS   */
+   /*************/
 
-    this->f = func;
-    this->size = size;
-}
+    /**
+     * 0) sin funciones extra, solo monomios
+     **/
 
-void CML::fit(Vector x,Vector y)
+std::vector<std::function<double(double)>> CML::fn_init(int grado, uint mode)
 {
-    MatrixXd A = Matrix(this->size,this->size);
+    std::vector<std::function<double(double)>> F;
 
-    for(int i =0;i<y.size();i++){
-        A.row(i)=this->f(x[i]);
+    for (uint i = 0; i <= grado; i++)
+        F.push_back(
+            [&](double x){ return pow(x, i); }
+        );
+
+    switch (mode)
+    {
+    case 0:
+        return F;
+    default:
+        exit(1);
     }
-    Vector b = Vector(y);
-    this->ata=A.transpose()*A;
-    this->atb = A.transpose()*b;
-    Vector res = this->ata.lu().solve(this->atb);
-    this->pred = res;
-}
-Vector CML::appF(int a){
-    return this->f(a);
-}
-Matrix CML::getA(){
-    return this->ata;
 }
 
-Vector CML::getB(){
-    return this->atb;
-}
-double CML::predict(double a)
+Vector CML::_fit(Vector x, Vector y)
 {
-    Vector fa = this->f(a);
-    double res = fa.transpose()*this->pred;
-    return res;
+    uint m = x.size();
+    uint n = this->F.size();
+
+    MatrixXd A = Matrix(m, n);
+
+    for (uint i = 0; i < m; i++)
+        for (uint j = 0; j < n; j++)
+            A(i, j) = this->F[j](x[i]);
+
+    Matrix AtA = A.transpose() * A;
+    Vector Atb = A.transpose() * y;
+
+    return AtA.lu().solve(Atb);
+}
+
+double CML::_predict(double x)
+{
+    double y = 0;
+
+    for (uint i = 0; i < F.size(); i++)
+        y += F[i](x);
+
+    return y;
 }
