@@ -10,6 +10,7 @@ PYBIND11_MODULE(predict, m) {
     py::class_<CML>(m, "CML")
         .def(py::init<const std::function<Vector(double)>,int>())
         .def("fit", &CML::fit)
-        .def("predict",&CML::predict);
+        .def("predict",&CML::predict)
+        .def("coef",&CML::coef);
 }
 

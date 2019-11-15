@@ -32,6 +32,11 @@ public:
         return _predict(x);
 
     };
+
+    Vector coef()
+    {
+        return a;
+    };
 private:
     // familia de funciones F
     std::function<Vector(double)> F;
