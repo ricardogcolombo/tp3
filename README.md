@@ -13,5 +13,5 @@ pyenv global 3.6.5
 pyenv virtualenv 3.6.5 tp3
 pyenv activate tp3
 pip install -r requirements.txt
-pyenv notebook notebooks/
+jupyter notebook notebooks/
 ```
