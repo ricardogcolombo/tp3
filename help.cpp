@@ -64,7 +64,7 @@ int main(int argc, char const *argv[])
     << "pip install -r requirements.txt" << endl
     << "jupyter notebook notebooks/"
     << endl;
-  else if (strcmp(argv[1], "run"))
+  else if (strcmp(argv[1], "run") == 0)
     cout
     << "+====================+" << endl
     << "| Usar CMl en Python |" << endl
@@ -84,7 +84,7 @@ int main(int argc, char const *argv[])
     << "cml.predict(x*)" << endl
     << "Predice un x* despues de calcular `fit`" << endl
     << " - x* / len(x*)==len(x)" << endl;
-  else if (strcmp(argv[1], "tools"))
+  else if (strcmp(argv[1], "tools") == 0)
     cout
     << "+==================+" << endl
     << "| Preprocesamiento |" << endl
@@ -97,7 +97,7 @@ int main(int argc, char const *argv[])
     << "./get_cant_vuelos.sh year||2008" << endl
     << "  > /delays_by_month/delays_by_month-${year}.csv" << endl
     << "  Cantidad de delyas por mes en un año dado" << endl;
-  else if (strcmp(argv[1], "example"))
+  else if (strcmp(argv[1], "example") == 0)
     cout
     << "+=========+" << endl
     << "| Ejemplo |" << endl
@@ -116,8 +116,7 @@ int main(int argc, char const *argv[])
     << "cml.fit(x,y)" << endl
     << endl
     << "x_axis = np.arange(20)" << endl
-    << "y_axis = [cml.predict(i) for i in x_axis]" << endl
-    << "}" << endl;
+    << "y_axis = [cml.predict(i) for i in x_axis]" << endl;
   else return 1;
 
   return 0;
